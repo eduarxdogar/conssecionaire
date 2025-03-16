@@ -3,6 +3,7 @@ package com.consecionario.cars.infraestructure.entities;
 import lombok.Data;
 
 import javax.persistence.*;
+
 @Entity
 @Table(name = "cars")
 @Data
@@ -10,7 +11,6 @@ public class CarsEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Column(name = "id_tuition")
     private Long id;
 
@@ -30,7 +30,7 @@ public class CarsEntity {
     private double usedPrice;
 
     @ManyToOne
-    @JoinColumn(name = "conssecionaire_id")
+    @JoinColumn(name = "conssecionaire_id", nullable = false)
     private ConssecionaireEntity conssecionaire;
 
     @Override
@@ -42,7 +42,7 @@ public class CarsEntity {
                 ", yearOfProdution=" + yearOfProdution +
                 ", newPrice=" + newPrice +
                 ", usedPrice=" + usedPrice +
-                ", consecionario=" + conssecionaire +
+                ", conssecionaire=" + conssecionaire +
                 '}';
     }
 }

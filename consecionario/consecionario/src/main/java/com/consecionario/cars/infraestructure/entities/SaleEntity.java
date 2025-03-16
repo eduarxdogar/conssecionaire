@@ -11,7 +11,6 @@ public class SaleEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Column(name = "sale_id")
     private Long id;
 
@@ -22,13 +21,12 @@ public class SaleEntity {
     private int accumulatedPoints;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id")
+    @JoinColumn(name = "customer_id", nullable = false)
     private CustomerEntity customer;
 
     @ManyToOne
-    @JoinColumn (name = "employee_id")
+    @JoinColumn(name = "employee_id", nullable = false)
     private EmployeeEntity employee;
-
 
     @Override
     public String toString() {

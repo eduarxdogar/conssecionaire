@@ -13,7 +13,6 @@ public class EmployeeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Column(name = "id_Employe")
     private Long id;
 
@@ -36,10 +35,10 @@ public class EmployeeEntity {
     private double salaryBase;
 
     @ManyToOne
-    @JoinColumn(name = "concesionario_id")
-    private ConssecionaireEntity consecionario;
+    @JoinColumn(name = "conssecionaire_id", nullable = false)
+    private ConssecionaireEntity conssecionaire;
 
-    @OneToMany(mappedBy = "empleado")
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SaleEntity> saleList;
 
     @Override
@@ -52,7 +51,7 @@ public class EmployeeEntity {
                 ", corporateEmail='" + corporateEmail + '\'' +
                 ", dateOfAdmission=" + dateOfAdmission +
                 ", salaryBase=" + salaryBase +
-                ", consecionario=" + consecionario +
+                ", conssecionaire=" + conssecionaire +
                 ", saleList=" + saleList +
                 '}';
     }

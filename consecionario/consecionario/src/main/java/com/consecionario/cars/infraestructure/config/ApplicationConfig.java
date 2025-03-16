@@ -16,25 +16,18 @@ public class ApplicationConfig {
     @Bean
     public ConssecionaireService conssecionaireService(IConssecionaireRepositoryPort iConssecionaireRepositoryPort, IConssecionaireGetAdditionalUseCase iConssecionaireGetAdditionalUseCase) {
         return new ConssecionaireService(
-                (IConssecionaireUpdateUseCase) new CreateConssecionaireUseCaseImpl(iConssecionaireRepositoryPort),
-                (IConssecionaireRetriveUseCase) new DeleteConssecionaireUseCaseImpl(iConssecionaireRepositoryPort),
-                (IConssecionaireDeleteUseCase) new UpdateConssecionaireUseCaseImpl(iConssecionaireRepositoryPort),
-                (IConssecionaireGetAdditionalUseCase) new RetriveConssecionaireUseCaseImpl(iConssecionaireRepositoryPort),
-                (IConssecionaireCreateUseCase) iConssecionaireGetAdditionalUseCase
-
+                new UpdateConssecionaireUseCaseImpl(iConssecionaireRepositoryPort),
+                new RetriveConssecionaireUseCaseImpl(iConssecionaireRepositoryPort),
+                new DeleteConssecionaireUseCaseImpl(iConssecionaireRepositoryPort),
+                iConssecionaireGetAdditionalUseCase,
+                new CreateConssecionaireUseCaseImpl(iConssecionaireRepositoryPort)
         );
     }
 
-    @Bean
-    public IConssecionaireRepositoryPort iConssecionaireRepositoryPort(IConssecionaireUpdateRepositoryJpa iConssecionaireUpdateRepositoryJpa) {
-        return (IConssecionaireRepositoryPort) iConssecionaireUpdateRepositoryJpa;
-    }
 
     @Bean
-
     public IConssecionaireGetAdditionalUseCase getAdditionalUseCase(IExternalServicePort iExternalServicePort) {
         return new GetAdditionalConssecionaireUseCaseImpl(iExternalServicePort);
-
     }
 
     @Bean

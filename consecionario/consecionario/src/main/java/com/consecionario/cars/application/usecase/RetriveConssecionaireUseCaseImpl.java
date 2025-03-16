@@ -17,11 +17,11 @@ public class RetriveConssecionaireUseCaseImpl implements IConssecionaireRetriveU
 
     @Override
     public Optional<Conssesionaire> getConssecionaire(Long id) {
-        return iConssecionaireRepositoryPort.findById(id);
+        return iConssecionaireRepositoryPort.findDomainById(id);
     }
 
     @Override
     public List<Conssesionaire> getAllConssecionaire() {
-        return iConssecionaireRepositoryPort.finAll();
+        return iConssecionaireRepositoryPort.findAll();
     }
 }

@@ -14,6 +14,7 @@ public class DeleteConssecionaireUseCaseImpl implements IConssecionaireDeleteUse
 
     @Override
     public boolean deleteConssecionaire(Long id) {
-        return iConssecionaireRepositoryPort.deleteById(id);
+        iConssecionaireRepositoryPort.deleteById(id);
+        return true; // Asumiendo que la eliminación fue exitosa o agregas manejo de excepciones
     }
 }

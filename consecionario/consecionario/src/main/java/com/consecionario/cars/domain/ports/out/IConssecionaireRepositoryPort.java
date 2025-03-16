@@ -7,15 +7,11 @@ import java.util.Optional;
 
 public interface IConssecionaireRepositoryPort {
 
-    // Actualizar un consecionario
     Conssesionaire save(Conssesionaire conssecionaire);
-
     Optional<Conssesionaire> update(Conssesionaire conssecionaire);
+    List<Conssesionaire> findAll();
+    void deleteById(Long id);
+    Optional<Conssesionaire> findDomainById(Long id);
 
-
-    Optional<Conssesionaire>findById(Long id);
-
-    List<Conssesionaire> finAll();
-
-    boolean deleteById(Long id);
 }
+

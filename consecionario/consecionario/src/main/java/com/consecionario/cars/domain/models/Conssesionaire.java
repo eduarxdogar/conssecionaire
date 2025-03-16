@@ -13,6 +13,11 @@ public class Conssesionaire {
 
     private String address;
 
+    public Conssesionaire(Long id, String name, String address) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+    }
     @Override
     public String toString() {
         return "Conssesionaire{" +

@@ -4,13 +4,14 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
+
 @Entity
 @Table(name = "customers")
 @Data
 public class CustomerEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Column(name = "idcustomer")
     private Long id;
 
@@ -27,11 +28,11 @@ public class CustomerEntity {
     private int telephoneStaff;
 
     @ManyToMany
-    @JoinColumn(name = "conssecionaire_id")
-    private List<CustomerEntity> clientList;
-
-    @ManyToMany
-    @JoinColumn(name = "tuition_id")
+    @JoinTable(
+            name = "customer_cars",
+            joinColumns = @JoinColumn(name = "customer_id"),
+            inverseJoinColumns = @JoinColumn(name = "car_id")
+    )
     private List<CarsEntity> carsList;
 
     @Override
@@ -42,7 +43,6 @@ public class CustomerEntity {
                 ", lastName='" + lastName + '\'' +
                 ", address='" + address + '\'' +
                 ", telephoneStaff=" + telephoneStaff +
-                ", clientList=" + clientList +
                 ", carsList=" + carsList +
                 '}';
     }

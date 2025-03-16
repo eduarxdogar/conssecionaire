@@ -3,24 +3,19 @@ package com.consecionario.cars.application.services;
 import com.consecionario.cars.domain.models.AdditionalConssecionaireInfo;
 import com.consecionario.cars.domain.models.Conssesionaire;
 import com.consecionario.cars.domain.ports.in.*;
-
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ConssecionaireService implements IConssecionaireUpdateUseCase , IConssecionaireCreateUseCase, IConssecionaireDeleteUseCase, IConssecionaireGetAdditionalUseCase, IConssecionaireRetriveUseCase {
+public class ConssecionaireService implements IConssecionaireUpdateUseCase, IConssecionaireCreateUseCase, IConssecionaireDeleteUseCase, IConssecionaireGetAdditionalUseCase, IConssecionaireRetriveUseCase {
 
-  private final IConssecionaireUpdateUseCase iConssecionaireUpdateUseCase;
-
-  private  final  IConssecionaireRetriveUseCase iConssecionaireRetriveUseCase;
-
-  private final  IConssecionaireDeleteUseCase iConssecionaireDeleteUseCase;
-
-  private final  IConssecionaireGetAdditionalUseCase iConssecionaireGetAdditionalUseCase;
-
-  private  final  IConssecionaireCreateUseCase iConssecionaireCreateUseCase;
+    private final IConssecionaireUpdateUseCase iConssecionaireUpdateUseCase;
+    private final IConssecionaireRetriveUseCase iConssecionaireRetriveUseCase;
+    private final IConssecionaireDeleteUseCase iConssecionaireDeleteUseCase;
+    private final IConssecionaireGetAdditionalUseCase iConssecionaireGetAdditionalUseCase;
+    private final IConssecionaireCreateUseCase iConssecionaireCreateUseCase;
 
     public ConssecionaireService(IConssecionaireUpdateUseCase iConssecionaireUpdateUseCase, IConssecionaireRetriveUseCase iConssecionaireRetriveUseCase, IConssecionaireDeleteUseCase iConssecionaireDeleteUseCase, IConssecionaireGetAdditionalUseCase iConssecionaireGetAdditionalUseCase, IConssecionaireCreateUseCase iConssecionaireCreateUseCase) {
         this.iConssecionaireUpdateUseCase = iConssecionaireUpdateUseCase;
@@ -29,7 +24,6 @@ public class ConssecionaireService implements IConssecionaireUpdateUseCase , ICo
         this.iConssecionaireGetAdditionalUseCase = iConssecionaireGetAdditionalUseCase;
         this.iConssecionaireCreateUseCase = iConssecionaireCreateUseCase;
     }
-
 
     @Override
     public Optional<Conssesionaire> updateConssecionaire(Long id, Conssesionaire conssecionaire) {
@@ -48,7 +42,7 @@ public class ConssecionaireService implements IConssecionaireUpdateUseCase , ICo
 
     @Override
     public boolean deleteConssecionaire(Long id) {
-        return false;
+        return iConssecionaireDeleteUseCase.deleteConssecionaire(id);
     }
 
     @Override
@@ -58,6 +52,6 @@ public class ConssecionaireService implements IConssecionaireUpdateUseCase , ICo
 
     @Override
     public List<Conssesionaire> getAllConssecionaire() {
-        return null;
+        return iConssecionaireRetriveUseCase.getAllConssecionaire();
     }
 }
